@@ -2,41 +2,42 @@ Use Est_Caso_5;
 
 CREATE TABLE IF NOT EXISTS Clientes(
     CPF_cliente VARCHAR(11) PRIMARY KEY,
-    Nome_Clientes VARCHAR(75) NOT NULL,
-    Data_Nasc_Clientes DATE NOT NULL,
-    Status_Fideli_Cliente ENUM('Normal','Prata','Ouro'),
-    Cod_Pagamentos VARCHAR(50),
+    Nome_Clientes VARCHAR(100),
+    Data_Nasc_Clientes DATE,
+    Status_Fideli_Cliente ENUM('Ativo','Inativo','Pendente'),
+    Cod_Pagamentos INT,
     CONSTRAINT FK_Pagamento_Clientes FOREIGN KEY(Cod_Pagamentos)
     REFERENCES Pagamentos(Cod_Pagamentos)
 
-INSERT INTO Clientes (CPF_cliente, Nome_Clientes, Data_Nasc_Clientes, Status_Fideli_Cliente, Cod_Pagamentos)
-VALUES ('123.456.789-00', 'João Silva', '1985-03-25', TRUE, 1);
 
 INSERT INTO Clientes (CPF_cliente, Nome_Clientes, Data_Nasc_Clientes, Status_Fideli_Cliente, Cod_Pagamentos)
-VALUES ('987.654.321-00', 'Maria Oliveira', '1990-07-10', FALSE, 2);
+VALUES ('12345678901', 'João Silva', '1985-03-25', 'Ativo', 101);
 
 INSERT INTO Clientes (CPF_cliente, Nome_Clientes, Data_Nasc_Clientes, Status_Fideli_Cliente, Cod_Pagamentos)
-VALUES ('456.789.123-00', 'Carlos Souza', '1978-11-15', TRUE, 3);
+VALUES ('23456789012', 'Maria Oliveira', '1990-07-15', 'Inativo', 102);
 
 INSERT INTO Clientes (CPF_cliente, Nome_Clientes, Data_Nasc_Clientes, Status_Fideli_Cliente, Cod_Pagamentos)
-VALUES ('654.321.987-00', 'Ana Martins', '2000-05-20', TRUE, 4);
+VALUES ('34567890123', 'Carlos Pereira', '1982-11-05', 'Pendente', 103);
 
 INSERT INTO Clientes (CPF_cliente, Nome_Clientes, Data_Nasc_Clientes, Status_Fideli_Cliente, Cod_Pagamentos)
-VALUES ('789.123.456-00', 'Lucas Almeida', '1995-01-30', FALSE, 5);
+VALUES ('45678901234', 'Ana Souza', '1995-06-20', 'Ativo', 104);
 
---Aq atualiza o status de fidelidade de um cliente específico
+INSERT INTO Clientes (CPF_cliente, Nome_Clientes, Data_Nasc_Clientes, Status_Fideli_Cliente, Cod_Pagamentos)
+VALUES ('56789012345', 'Paulo Santos', '2000-01-10', 'Ativo', 105);
+
+-- Aq atualiza o status de fidelidade de um cliente específico
 UPDATE Clientes
-SET Status_Fideli_Cliente = TRUE
-WHERE CPF_cliente = '987.654.321-00';
+SET Status_Fideli_Cliente = 'Inativo'
+WHERE CPF_cliente = '12345678901';
 
---Aq Atualiza o código de pagamento de um cliente com base em seu nome
+-- Aq atualiza o código de pagamento de um cliente específico
 UPDATE Clientes
-SET Cod_Pagamentos = 10
-WHERE Nome_Clientes = 'Lucas Almeida';
+SET Cod_Pagamentos = 106
+WHERE CPF_cliente = '23456789012';
 
---Aq deleta um cliente pelo CPF
+-- Aq deleta um cliente específico do registro
 DELETE FROM Clientes
-WHERE CPF_cliente = '456.789.123-00';
+WHERE CPF_cliente = '34567890123';
 );
 
 CREATE TABLE IF NOT EXISTS Pagamentos(
@@ -68,12 +69,12 @@ UPDATE Pagamentos
 SET Status_Pagamento = TRUE
 WHERE Cod_Pagamentos = 2;
 
---Aq atualiza o valor de pagamento de uma venda específica
+-- Aq atualiza o valor de pagamento de uma venda específica
 UPDATE Pagamentos
 SET Valor_Pagamentos = 800.00
 WHERE Cod_Venda = 104;
 
---Aq deleta um registro de pagamento com base no código do pagamento
+-- Aq deleta um registro de pagamento com base no código do pagamento
 DELETE FROM Pagamentos
 WHERE Cod_Pagamentos = 3;
 );
@@ -101,17 +102,17 @@ VALUES (104, 'Teclado Mecânico', 3, 4);
 INSERT INTO Vendas (Cod_Venda, Nome_Comprados, QTD_Comprados, Cod_Pagamentos)
 VALUES (105, 'Fone de Ouvido', 2, 5);
 
---Aq atualiza a quantidade comprada para uma venda específica
+-- Aq atualiza a quantidade comprada para uma venda específica
 UPDATE Vendas
 SET QTD_Comprados = 5
 WHERE Cod_Venda = 104;
 
---Aqa atualiza o nome do item comprado para uma venda específica
+-- Aq atualiza o nome do item comprado para uma venda específica
 UPDATE Vendas
 SET Nome_Comprados = 'Monitor Ultrawide'
 WHERE Cod_Venda = 103;
 
---Aq deleta uma venda com base no código da venda
+-- Aq deleta uma venda com base no código da venda
 DELETE FROM Vendas
 WHERE Cod_Venda = 102;
 );
@@ -137,17 +138,17 @@ VALUES (4, 100, 300.00, 'Periféricos');
 INSERT INTO Produtos (Cod_Prod, Estoque, Preço, Categoria)
 VALUES (5, 75, 200.00, 'Áudio');
 
---Aq atualiza o preço de um produto específico
+-- Aq atualiza o preço de um produto específico
 UPDATE Produtos
 SET Preço = 2200.00
 WHERE Cod_Prod = 1;
 
---Aq atualiza o estoque de um produto específico
+-- Aq atualiza o estoque de um produto específico
 UPDATE Produtos
 SET Estoque = 120
 WHERE Cod_Prod = 4;
 
---Aq deleta um produto com base no código do produto
+-- Aq deleta um produto com base no código do produto
 DELETE FROM Produtos
 WHERE Cod_Prod = 3;
 );
@@ -181,17 +182,17 @@ VALUES (4, 'Ana Components', 'Teclado Mecânico', 4);
 INSERT INTO Fornecedores (Cod_Fornecedores, Contato_Fornecedor, Produtos_Fornecidos, Cod_Prod)
 VALUES (5, 'Lucas Áudio', 'Fone de Ouvido', 5);
 
---Aq atualiza o contato de um fornecedor específico
+-- Aq atualiza o contato de um fornecedor específico
 UPDATE Fornecedores
 SET Contato_Fornecedor = 'João Distribuidora e Serviços'
 WHERE Cod_Fornecedores = 1;
 
---Aq atualiza o produto fornecido por um fornecedor
+-- Aq atualiza o produto fornecido por um fornecedor
 UPDATE Fornecedores
 SET Produtos_Fornecidos = 'Monitor Ultrawide'
 WHERE Cod_Fornecedores = 3;
 
---Aq deleta um fornecedor com base no código do fornecedor
+-- Aq deleta um fornecedor com base no código do fornecedor
 DELETE FROM Fornecedores
 WHERE Cod_Fornecedores = 5;
 );
@@ -232,17 +233,17 @@ VALUES (4, '101', 'Residencial', 'Praça da Sé', NULL, '54321-987', 'Centro His
 INSERT INTO Enderecos (ID_Enderecos, Num_End, Tipo_End, Logradouro_End, Complemento, CEP_End, Bairro_End, Estado_End, Cidade_End, Clientes_CPF)
 VALUES (5, '202', 'Comercial', 'Rua 25 de Março', 'Sala 301', '67890-123', 'Mercado', 'SP', 'São Paulo', '789.123.456-00');
 
---Aq atualiza o logradouro e o bairro de um endereço específico
+-- Aq atualiza o logradouro e o bairro de um endereço específico
 UPDATE Enderecos
 SET Logradouro_End = 'Rua Nova Esperança', Bairro_End = 'Vila Esperança'
 WHERE ID_Enderecos = 3;
 
---Aq atualiza o complemento de um endereço específico
+-- Aq atualiza o complemento de um endereço específico
 UPDATE Enderecos
 SET Complemento = 'Bloco B, Apto 22'
 WHERE ID_Enderecos = 1;
 
---Aq deleta um endereço com base no ID do endereço
+-- Aq deleta um endereço com base no ID do endereço
 DELETE FROM Enderecos
 WHERE ID_Enderecos = 4;
 );
@@ -272,17 +273,17 @@ VALUES ('654.321.987-00', 4);
 INSERT INTO Clientes_Produtos (CPF, Cod_Prod)
 VALUES ('789.123.456-00', 5);
 
---Aq atualiza um produto associado a um cliente específico
+-- Aq atualiza um produto associado a um cliente específico
 UPDATE Clientes_Produtos
 SET Cod_Prod = 4
 WHERE CPF = '123.456.789-00' AND Cod_Prod = 1;
 
---Aq atualiza o cliente associado a um produto específico
+-- Aq atualiza o cliente associado a um produto específico
 UPDATE Clientes_Produtos
 SET CPF = '987.654.321-00'
 WHERE CPF = '456.789.123-00' AND Cod_Prod = 3;
 
---Aq deleta uma associação específica entre cliente e produto
+-- Aq deleta uma associação específica entre cliente e produto
 DELETE FROM Clientes_Produtos
 WHERE CPF = '654.321.987-00' AND Cod_Prod = 4;
 );
@@ -317,17 +318,17 @@ VALUES (104, 4);
 INSERT INTO Vendas_Produtos (Cod_Venda, Cod_Prod)
 VALUES (105, 5);
 
---Aq atualiza um produto associado a uma venda específica
+-- Aq atualiza um produto associado a uma venda específica
 UPDATE Vendas_Produtos
 SET Cod_Prod = 3
 WHERE Cod_Venda = 101 AND Cod_Prod = 1;
 
---Aq atualiza a venda associada a um produto específico
+-- Aq atualiza a venda associada a um produto específico
 UPDATE Vendas_Produtos
 SET Cod_Venda = 106
 WHERE Cod_Venda = 104 AND Cod_Prod = 4;
 
---Aq deleta uma associação específica entre venda e produto
+-- Aq deleta uma associação específica entre venda e produto
 DELETE FROM Vendas_Produtos
 WHERE Cod_Venda = 102 AND Cod_Prod = 2;
 );

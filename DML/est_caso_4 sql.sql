@@ -27,17 +27,17 @@ VALUES (1004, '1995-03-10', 'Pilates, Funcional', '654.321.987-00', 4, FALSE);
 INSERT INTO Alunos (Matricula, Data_Nasc_Aluno, Modalidades_Interesse, CPF, Cod_Pagamento, PT_Personalizado)
 VALUES (1005, '1998-12-05', 'Crossfit, Yoga', '789.123.456-00', 5, TRUE);
 
---Aq atualiza a modalidade de interesse de um aluno específico
+-- Aq atualiza a modalidade de interesse de um aluno específico
 UPDATE Alunos
 SET Modalidades_Interesse = 'Musculação, Corrida'
 WHERE Matricula = 1001;
 
---Aq atualiza o status do PT personalizado de um aluno específico
+-- Aq atualiza o status do PT personalizado de um aluno específico
 UPDATE Alunos
 SET PT_Personalizado = TRUE
 WHERE Matricula = 1002;
 
---Aq deleta um aluno com base na matrícula
+-- Aq deleta um aluno com base na matrícula
 DELETE FROM Alunos
 WHERE Matricula = 1003;
 );
@@ -63,17 +63,17 @@ VALUES (4, 800.00, '2024-04-05', 'Cancelado');
 INSERT INTO Pagamentos (Cod_Pagamento, Valor_Pagamento, Data_Pagamento, Status_Pagamento)
 VALUES (5, 2200.00, '2024-05-22', 'Pendente');
 
---Aq atualiza o status de pagamento de um pagamento específico para 'Pago'
+-- Aq atualiza o status de pagamento de um pagamento específico para 'Pago'
 UPDATE Pagamentos
 SET Status_Pagamento = 'Pago'
 WHERE Cod_Pagamento = 2;
 
---Aq atualiza o valor do pagamento de um pagamento específico
+-- Aq atualiza o valor do pagamento de um pagamento específico
 UPDATE Pagamentos
 SET Valor_Pagamento = 1400.50
 WHERE Cod_Pagamento = 4;
 
---Aq deleta um pagamento com base no código do pagamento
+-- Aq deleta um pagamento com base no código do pagamento
 DELETE FROM Pagamentos
 WHERE Cod_Pagamento = 3;
 );
@@ -89,35 +89,30 @@ CREATE TABLE IF NOT EXISTS Plano_Treinamento(
     PT_Personalizado BOOLEAN NOT NULL,
     Progresso_Aluno ENUM('Iniciante','Intermediario','Avançado') NOT NULL
 
-    -- Comando 1
 INSERT INTO Plano_Treinamento (PT_Personalizado, Progresso_Aluno)
 VALUES (TRUE, 'Iniciante');
 
--- Comando 2
 INSERT INTO Plano_Treinamento (PT_Personalizado, Progresso_Aluno)
 VALUES (FALSE, 'Intermediario');
 
--- Comando 3
 INSERT INTO Plano_Treinamento (PT_Personalizado, Progresso_Aluno)
 VALUES (TRUE, 'Avançado');
 
--- Comando 4
 INSERT INTO Plano_Treinamento (PT_Personalizado, Progresso_Aluno)
 VALUES (FALSE, 'Iniciante');
 
--- Comando 5
 INSERT INTO Plano_Treinamento (PT_Personalizado, Progresso_Aluno)
 VALUES (TRUE, 'Intermediario');
 
---Aq atualiza o progresso de um aluno específico
+-- Aq atualiza o progresso de um aluno específico
 UPDATE Plano_Treinamento
 SET Plano_Treinamento = 'Intermediario'
 
---Aq atualiza o status de PT Personalizado de um aluno específico
+-- Aq atualiza o status de PT Personalizado de um aluno específico
 UPDATE Plano_Treinamento
 SET PT_Personalizado = FALSE
 
---Aq deleta o progresso de um aluno especifico 
+-- Aq deleta o progresso de um aluno especifico 
 DELETE FROM Plano_Treinamento
 WHERE Plano_Treinamento;
 );
@@ -147,17 +142,17 @@ VALUES (4, 1004, FALSE, 'Quinta-feira, 16:00');
 INSERT INTO Instrutores (Cod_Instrutor, Alunos_Instrutor, PT_Personalizado, Dia_Horario_Aula)
 VALUES (5, 1005, TRUE, 'Sexta-feira, 09:00');
 
---Aq atualiza o horário de aula de um instrutor específico
+-- Aq atualiza o horário de aula de um instrutor específico
 UPDATE Instrutores
 SET Dia_Horario_Aula = 'Segunda-feira, 10:00'
 WHERE Cod_Instrutor = 1;
 
---Aq atualiza o status de PT Personalizado de um instrutor
+-- Aq atualiza o status de PT Personalizado de um instrutor
 UPDATE Instrutores
 SET PT_Personalizado = FALSE
 WHERE Cod_Instrutor = 2;
 
---Aq deleta um instrutor com base no código do instrutor
+-- Aq deleta um instrutor com base no código do instrutor
 DELETE FROM Instrutores
 WHERE Cod_Instrutor = 3;
 );
@@ -182,17 +177,17 @@ VALUES (4, 'Quinta-feira, 16:00', 30);
 INSERT INTO Aulas (Cod_Aula, Dia_Horario_Aula, Capacidade)
 VALUES (5, 'Sexta-feira, 09:00', 20);
 
---Aq atualiza o horário de uma aula específica
+-- Aq atualiza o horário de uma aula específica
 UPDATE Aulas
 SET Dia_Horario_Aula = 'Segunda-feira, 09:00'
 WHERE Cod_Aula = 1;
 
---Aq atualiza a capacidade de uma aula específica
+-- Aq atualiza a capacidade de uma aula específica
 UPDATE Aulas
 SET Capacidade = 18
 WHERE Cod_Aula = 3;
 
---Aq deleta uma aula com base no código da aula
+-- Aq deleta uma aula com base no código da aula
 DELETE FROM Aulas
 WHERE Cod_Aula = 4;
 );
@@ -223,17 +218,17 @@ VALUES (4, 'Yoga', 1004);
 INSERT INTO Modalidades (Modalidade_Codigo, Modalidade_Nome, Alunos_Matriculados)
 VALUES (5, 'Natação', 1005);
 
---Aq atualiza a modalidade de um aluno específico
+-- Aq atualiza a modalidade de um aluno específico
 UPDATE Modalidades
 SET Modalidade_Nome = 'Pilates Avançado'
 WHERE Modalidade_Codigo = 2;
 
---Aq atualiza o aluno matriculado em uma modalidade específica
+-- Aq atualiza o aluno matriculado em uma modalidade específica
 UPDATE Modalidades
 SET Alunos_Matriculados = 1006
 WHERE Modalidade_Codigo = 3;
 
---Aq deleta uma modalidade com base no código da modalidade
+-- Aq deleta uma modalidade com base no código da modalidade
 DELETE FROM Modalidades
 WHERE Modalidade_Codigo = 4;
 );
@@ -273,17 +268,17 @@ VALUES (4, 101, 'Residencial', 'Rua D', 'Casa 10', '45678-901', 'Bairro São Jos
 INSERT INTO Enderecos (ID_Enderecos, Num_End, Tipo_End, Logradouro_End, Complemento, CEP_End, Bairro_End, Estado_End, Cidade_End, Matricula)
 VALUES (5, 202, 'Comercial', 'Avenida E', 'Loja 15', '56789-012', 'Centro', 'BA', 'Salvador', 1005);
 
---Aq atualiza o complemento de um endereço específico
+-- Aq atualiza o complemento de um endereço específico
 UPDATE Enderecos
 SET Complemento = 'Apartamento 301'
 WHERE ID_Endereços = 1;
 
---Aq atualiza o estado e a cidade de um endereço específico
+-- Aq atualiza o estado e a cidade de um endereço específico
 UPDATE Enderecos
 SET Estado_End = 'RS', Cidade_End = 'Porto Alegre'
 WHERE ID_Enderecos = 2;
 
---Aq deleta um endereço com base no ID do endereço
+-- Aq deleta um endereço com base no ID do endereço
 DELETE FROM Enderecos
 WHERE ID_Enderecos = 3;
 );
@@ -312,17 +307,17 @@ VALUES (1004, 4);
 INSERT INTO Alunos_Modalidades (Matricula, Modalidade_Codigo)
 VALUES (1005, 5);
 
---Aq atualiza a modalidade de um aluno específico
+-- Aq atualiza a modalidade de um aluno específico
 UPDATE Alunos_Modalidades
 SET Modalidade_Codigo = 3
 WHERE Matricula = 1001;
 
---Aq atualiza o aluno matriculado em uma modalidade específica
+-- Aq atualiza o aluno matriculado em uma modalidade específica
 UPDATE Alunos_Modalidades
 SET Matricula = 1006
 WHERE Modalidade_Codigo = 2;
 
---Aq deleta a associação de um aluno com uma modalidade
+-- Aq deleta a associação de um aluno com uma modalidade
 DELETE FROM Alunos_Modalidades
 WHERE Matricula = 1003 AND Modalidade_Codigo = 3;
 );
@@ -353,17 +348,17 @@ VALUES (1004, 'Quinta-feira, 16:00');
 INSERT INTO Aluno_Aula (Matricula, Dia_Horario_Aula)
 VALUES (1005, 'Sexta-feira, 09:00');
 
---Aq atualiza o dia e horário de aula de um aluno específico
+-- Aq atualiza o dia e horário de aula de um aluno específico
 UPDATE Aluno_Aula
 SET Dia_Horario_Aula = 'Segunda-feira, 09:00'
 WHERE Matricula = 1001;
 
---Aq atualiza a matrícula de um aluno em um horário de aula específico
+-- Aq atualiza a matrícula de um aluno em um horário de aula específico
 UPDATE Aluno_Aula
 SET Matricula = 1006
 WHERE Dia_Horario_Aula = 'Quarta-feira, 14:00';
 
---Aq deleta a associação de um aluno com um horário de aula específico
+-- Aq deleta a associação de um aluno com um horário de aula específico
 DELETE FROM Aluno_Aula
 WHERE Matricula = 1003 AND Dia_Horario_Aula = 'Quarta-feira, 14:00';
 );

@@ -25,17 +25,17 @@ VALUES (1004, '2024-11-17 18:00', '2024-11-17 20:30', 'Aeroporto de Campinas', '
 INSERT INTO Voos (Voo_Codigo, data_Hora_Origem, data_Hora_Destino, aeroporto_Origem, aeroporto_Destino, aeronave_Prefixo)
 VALUES (1005, '2024-11-18 09:00', '2024-11-18 11:30', 'Aeroporto de São Paulo', 'Aeroporto de Salvador', 'PT-MNO');
 
---Aq atualiza o horário de origem de um voo específico
+-- Aq atualiza o horário de origem de um voo específico
 UPDATE Voos
 SET data_Hora_Origem = '2024-11-16 09:00'
 WHERE Voo_Codigo = 1001;
 
---Aq atualiza o destino de um voo específico
+-- Aq atualiza o destino de um voo específico
 UPDATE Voos
 SET aeroporto_Destino = 'Aeroporto de Porto Alegre'
 WHERE Voo_Codigo = 1002;
 
---Aq deleta um voo com base no código do voo
+-- Aq deleta um voo com base no código do voo
 DELETE FROM Voos
 WHERE Voo_Codigo = 1003;
 );
@@ -62,17 +62,17 @@ VALUES ('PT-JKL', 'Bombardier CRJ900', 2015, 90, 'Bombardier');
 INSERT INTO Aeronaves (aeronave_Prefixo, aeronave_Modelo, aeronave_anofabri, aeronave_capacidade, aeronave_Fabricante)
 VALUES ('PT-MNO', 'Airbus A350', 2022, 280, 'Airbus');
 
---Aq atualiza o modelo de uma aeronave específica
+-- Aq atualiza o modelo de uma aeronave específica
 UPDATE Aeronaves
 SET aeronave_Modelo = 'Boeing 777'
 WHERE aeronave_Prefixo = 'PT-ABC';
 
---Aq atualiza a capacidade de uma aeronave específica
+-- Aq atualiza a capacidade de uma aeronave específica
 UPDATE Aeronaves
 SET aeronave_capacidade = 160
 WHERE aeronave_Prefixo = 'PT-DEF';
 
---Aq deleta uma aeronave com base no prefixo da aeronave
+-- Aq deleta uma aeronave com base no prefixo da aeronave
 DELETE FROM Aeronaves
 WHERE aeronave_Prefixo = 'PT-GHI';
 );
@@ -103,17 +103,17 @@ VALUES (4, 'Aeroporto de Galeão', 'Rio de Janeiro', 'Brasil', -43.2433, -22.809
 INSERT INTO Aeroportos (aeroporto_Cod, aeroporto_Nome, aeroporto_Local, aeroporto_País, aeroporto_Longitude, aeroporto_Latitude)
 VALUES (5, 'Aeroporto de Santos Dumont', 'Rio de Janeiro', 'Brasil', -43.1633, -22.9103);
 
---Aq atualiza o nome de um aeroporto específico
+-- Aq atualiza o nome de um aeroporto específico
 UPDATE Aeroportos
 SET aeroporto_Nome = 'Aeroporto Internacional de São Paulo'
 WHERE aeroporto_Cod = 1;
 
---Aq atualiza a latitude e longitude de um aeroporto específico
+-- Aq atualiza a latitude e longitude de um aeroporto específico
 UPDATE Aeroportos
 SET aeroporto_Latitude = -22.9155, aeroporto_Longitude = -43.1668
 WHERE aeroporto_Cod = 5;
 
---Aq deleta um aeroporto com base no código do aeroporto
+-- Aq deleta um aeroporto com base no código do aeroporto
 DELETE FROM Aeroportos
 WHERE aeroporto_Cod = 2;
 );
@@ -144,17 +144,17 @@ VALUES (1004, 5004);
 INSERT INTO Reservas (FK_Voo, FK_Pass)
 VALUES (1005, 5005);
 
---Aq atualiza o passageiro de uma reserva específica
+-- Aq atualiza o passageiro de uma reserva específica
 UPDATE Reservas
 SET FK_Pass = 5006
 WHERE FK_Voo = 1001 AND FK_Pass = 5001;
 
---Aq altera o voo de uma reserva específica
+-- Aq altera o voo de uma reserva específica
 UPDATE Reservas
 SET FK_Voo = 1006
 WHERE FK_Voo = 1002 AND FK_Pass = 5002;
 
---Aq deleta uma reserva específica de um voo e passageiro
+-- Aq deleta uma reserva específica de um voo e passageiro
 DELETE FROM Reservas
 WHERE FK_Voo = 1003 AND FK_Pass = 5003;
 );
@@ -187,17 +187,17 @@ VALUES ('333.444.555-66', 'Ana Souza', '(41) 93333-4444', 'Travessa D, 101, Curi
 INSERT INTO Passageiros (pass_CPF, pass_Nome, pass_Tel, pass_End, pass_Email)
 VALUES ('222.333.444-55', 'Lucas Costa', '(51) 92222-3333', 'Rua E, 202, Porto Alegre, RS', 'lucas.costa@email.com');
 
---Aq atualiza o telefone de um passageiro específico
+-- Aq atualiza o telefone de um passageiro específico
 UPDATE Passageiros
 SET pass_Tel = '(11) 99888-7777'
 WHERE pass_CPF = '123.456.789-00';
 
---Aq altera o endereço de um passageiro específico
+-- Aq altera o endereço de um passageiro específico
 UPDATE Passageiros
 SET pass_End = 'Avenida F, 333, São Paulo, SP'
 WHERE pass_CPF = '987.654.321-00';
 
---Aq deleta um passageiro específico pelo CPF
+-- Aq deleta um passageiro específico pelo CPF
 DELETE FROM Passageiros
 WHERE pass_CPF = '555.666.777-88';
 );
@@ -224,17 +224,17 @@ VALUES ('333.444.555-66', 'Ana Souza', '(41) 93333-4444', 'Travessa D, 101, Curi
 INSERT INTO Passageiros_II (pass_CPF, pass_Nome, pass_Tel, pass_End, pass_Email)
 VALUES ('222.333.444-55', 'Lucas Costa', '(51) 92222-3333', 'Rua E, 202, Porto Alegre, RS', 'lucas.costa@email.com');
 
---Aq atualiza o telefone de um passageiro específico
+-- Aq atualiza o telefone de um passageiro específico
 UPDATE Passageiros_II
 SET pass_Tel = '(11) 99888-7777'
 WHERE pass_CPF = '123.456.789-00';
 
---Aq altera o endereço de um passageiro específico
+-- Aq altera o endereço de um passageiro específico
 UPDATE Passageiros_II
 SET pass_End = 'Avenida F, 333, São Paulo, SP'
 WHERE pass_CPF = '987.654.321-00';
 
---Aq deleta um passageiro específico pelo CPF
+-- Aq deleta um passageiro específico pelo CPF
 DELETE FROM Passageiros_II
 WHERE pass_CPF = '555.666.777-88';
 );
@@ -262,17 +262,17 @@ VALUES (4, 'Coordenador', 'Fernanda Costa', '1992-02-18', '(41) 93333-4444');
 INSERT INTO Funcionarios (func_ID, func_Funcao, func_Nome, func_Data_Nasc, func_Tel)
 VALUES (5, 'Diretor', 'João Silva', '1975-05-10', '(51) 92222-3333');
 
---Aq atualiza a função de um funcionário específico
+-- Aq atualiza a função de um funcionário específico
 UPDATE Funcionarios
 SET func_Funcao = 'Supervisor'
 WHERE func_ID = 1;
 
---Aq atualiza o telefone de um funcionário específico
+-- Aq atualiza o telefone de um funcionário específico
 UPDATE Funcionarios
 SET func_Tel = '(21) 99999-8888'
 WHERE func_ID = 2;
 
---Aq deleta um funcionário específico pelo ID
+-- Aq deleta um funcionário específico pelo ID
 DELETE FROM Funcionarios
 WHERE func_ID = 3;
 );
@@ -300,17 +300,17 @@ VALUES (4, 1004);
 INSERT INTO Operam_Voo (Func_FK, Voos_FK)
 VALUES (5, 1005);
 
---Aq atualiza o voo operado por um funcionário específico
+-- Aq atualiza o voo operado por um funcionário específico
 UPDATE Operam_Voo
 SET Voos_FK = 1006
 WHERE Func_FK = 1 AND Voos_FK = 1001;
 
---Aq altera o funcionário que opera um voo específico
+-- Aq altera o funcionário que opera um voo específico
 UPDATE Operam_Voo
 SET Func_FK = 2
 WHERE Func_FK = 5 AND Voos_FK = 1005;
 
---Aq deleta a operação de voo de um funcionário específico
+-- Aq deleta a operação de voo de um funcionário específico
 DELETE FROM Operam_Voo
 WHERE Func_FK = 3 AND Voos_FK = 1003;
 );

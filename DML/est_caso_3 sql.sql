@@ -1,7 +1,7 @@
 Use Est_Caso_3;
 CREATE TABLE IF NOT EXISTS Clientes (
     cod_Cliente INT PRIMARY KEY,
-    CNPJ_Clientes NOT NULL UNIQUE,
+    CNPJ_Clientes VARCHAR(20) NOT NULL UNIQUE,
     Razao_Social VARCHAR(300) NOT NULL,
     Data_de_Cadastramento DATE NOT NULL,
     P_Contato_Clientes VARCHAR(100) NOT NULL,
@@ -27,17 +27,17 @@ VALUES ('22334455000170', 'Logística Eficiente', '2024-04-05', 'Fernanda Souza'
 INSERT INTO Clientes (CNPJ_Clientes, Razao_Social, Data_de_Cadastramento, P_Contato_Clientes, Num_Encomenda, Id_Enderecos)
 VALUES ('55667788000190', 'Distribuidora Global', '2024-05-12', 'Ricardo Pereira', 10, 5);
 
---Aq atualiza o número de encomendas de um cliente específico
+-- Aq atualiza o número de encomendas de um cliente específico
 UPDATE Clientes
 SET Num_Encomenda = 8
 WHERE cod_Cliente = 3;
 
---Aq altera o contato do cliente específico
+-- Aq altera o contato do cliente específico
 UPDATE Clientes
 SET P_Contato_Clientes = 'Roberta Ferreira'
 WHERE cod_Cliente = 2;
 
---Aq deleta um cliente específico pelo código do cliente
+-- Aq deleta um cliente específico pelo código do cliente
 DELETE FROM Clientes
 WHERE cod_Cliente = 4;
 );
@@ -67,17 +67,17 @@ INSERT INTO Encomendas (Data_Inclusao_Enc, Valor_Total_Enc, Valor_Desc_Enc, Valo
 VALUES ('2024-11-05', 1200.00, 200.00, 1000.00, 5, 15);
 
 
---Aq atualiza o valor de desconto em uma encomenda específica
+-- Aq atualiza o valor de desconto em uma encomenda específica
 UPDATE Encomendas
 SET Valor_Desc_Enc = 80.00, Valor_Liq_Enc = 920.00
 WHERE Num_Encomendas = 2;
 
---Aq altera a quantidade de pacotes em uma encomenda específica
+-- Aq altera a quantidade de pacotes em uma encomenda específica
 UPDATE Encomendas
 SET Quant_Pac = 20
 WHERE Num_Encomendas = 5;
 
---Aq deleta uma encomenda específica pelo número da encomenda
+-- Aq deleta uma encomenda específica pelo número da encomenda
 DELETE FROM Encomendas
 WHERE Num_Encomendas = 4;
 );
@@ -120,17 +120,17 @@ VALUES (321, 'Comercial', 'Rua Boa Vista', 'Sala 202', '65432-109', 'Sé', 'SP',
 INSERT INTO Enderecos (Num_End, Tipo_End, Logradouro_End, Complemento, CEP_End, Bairro_End, Estado_End, Cidade_End, Matricula_Emp, cod_Clientes)
 VALUES (654, 'Residencial', 'Avenida Brasil', NULL, '67890-123', 'Jardim América', 'RJ', 'Rio de Janeiro', NULL, 4);
 
---Aq atualiza o bairro e o complemento de um endereço
+-- Aq atualiza o bairro e o complemento de um endereço
 UPDATE Enderecos
 SET Bairro_End = 'Vila Mariana', Complemento = 'Casa'
 WHERE ID_Enderecos = 3;
 
---Aq altera a matrícula do funcionário associada a um endereço
+-- Aq altera a matrícula do funcionário associada a um endereço
 UPDATE Enderecos
 SET Matricula_Emp = 4
 WHERE ID_Enderecos = 4;
 
---Aq deleta um endereço específico pelo código do endereço
+-- Aq deleta um endereço específico pelo código do endereço
 DELETE FROM Enderecos
 WHERE ID_Enderecos = 2;
 );
@@ -161,17 +161,17 @@ VALUES ('Ana Souza', 'Designer Gráfico', 4000.00, '2022-01-15', 'Curso Avançad
 INSERT INTO Empregados (Nome_Empre, Cargo_Empre, Salario_Empre, Data_Adimissao_Empre, Qualificacoes_Empre, ID_Endereco)
 VALUES ('Pedro Lima', 'Assistente Administrativo', 3200.00, '2023-07-10', 'Excel Avançado e Noções de RH', 5);
 
---Aq atualiza o salário de um empregado específico
+-- Aq atualiza o salário de um empregado específico
 UPDATE Empregados
 SET Salario_Empre = 6000.00
 WHERE Matricula_Empre = 3;
 
---Aq altera o cargo e as qualificações de um empregado específico
+-- Aq altera o cargo e as qualificações de um empregado específico
 UPDATE Empregados
 SET Cargo_Empre = 'Coordenador de Projetos', Qualificacoes_Empre = 'Gestão de Projetos e Scrum'
 WHERE Matricula_Empre = 2;
 
---Aq deleta um empregado específico pela matrícula
+-- Aq deleta um empregado específico pela matrícula
 DELETE FROM Empregados
 WHERE Matricula_Empre = 4;
 );
@@ -205,17 +205,17 @@ VALUES (NULL, '(41) 97777-5555', NULL, '23.456.789/0001-67');
 INSERT INTO Telefone (Tel_Fixo, Tel_Cel, Matricula_Emp, CNPJ_Fornecedores_Tel)
 VALUES ('(51) 2200-3300', '(51) 96666-4444', 4, '67.890.123/0001-45');
 
---Aq atualiza o número de telefone celular de um telefone específico
+-- Aq atualiza o número de telefone celular de um telefone específico
 UPDATE Telefone
 SET Tel_Cel = '(11) 98888-6666'
 WHERE cod_Tel = 1;
 
---Aq altera o telefone fixo de um fornecedor específico
+-- Aq altera o telefone fixo de um fornecedor específico
 UPDATE Telefone
 SET Tel_Fixo = '(21) 4500-5500'
 WHERE CNPJ_Fornecedores_Tel = '98.765.432/0001-09';
 
---Aq deleta um telefone específico pelo código
+-- Aq deleta um telefone específico pelo código
 DELETE FROM Telefone
 WHERE cod_Tel = 4;
 );
@@ -239,17 +239,17 @@ VALUES ('23.456.789/0001-67', 'Ana Souza');
 INSERT INTO Fornecedores (CNPJ_Fornecedores, P_Contato_Fornecedores)
 VALUES ('67.890.123/0001-45', 'Pedro Lima');
 
---Aq atualiza a pessoa de contato de um fornecedor específico
+-- Aq atualiza a pessoa de contato de um fornecedor específico
 UPDATE Fornecedores
 SET P_Contato_Fornecedores = 'Lucas Mendes'
 WHERE CNPJ_Fornecedores = '12.345.678/0001-90';
 
---Aq altera a pessoa de contato de outro fornecedor
+-- Aq altera a pessoa de contato de outro fornecedor
 UPDATE Fornecedores
 SET P_Contato_Fornecedores = 'Fernanda Ribeiro'
 WHERE CNPJ_Fornecedores = '98.765.432/0001-09';
 
---Aq deleta um fornecedor específico pelo CNPJ
+-- Aq deleta um fornecedor específico pelo CNPJ
 DELETE FROM Fornecedores
 WHERE CNPJ_Fornecedores = '23.456.789/0001-67';
 );
@@ -280,17 +280,17 @@ VALUES ('45678901000156', 'Empresa D Ltda', 'Ana Souza', '65432109000156');
 INSERT INTO Empresas (CNPJ_Empresas, Razao_Social, P_Contato_Empresas, CNPJ_Fornecedores_Emp)
 VALUES ('56789012000167', 'Empresa E Ltda', 'Paulo Santos', '54321098000167');
 
--- Atualizar a razão social de uma empresa específica
+-- Aq atualiza a razão social de uma empresa específica
 UPDATE Empresas
 SET Razao_Social = 'Nova Empresa A Ltda'
 WHERE CNPJ_Empresas = '12345678000195';
 
--- Atualizar a pessoa de contato de uma empresa específica
+-- Aq atualiza a pessoa de contato de uma empresa específica
 UPDATE Empresas
 SET P_Contato_Empresas = 'Joana Silva'
 WHERE CNPJ_Empresas = '23456789000187';
 
--- Deletar uma empresa específica do registro
+-- Aq deleta uma empresa específica do registro
 DELETE FROM Empresas
 WHERE CNPJ_Empresas = '34567890000123';
 );
@@ -324,17 +324,17 @@ VALUES (4, 'Produto D', 'Preto', '5x15x20 cm', 1.2, 40.00, 3, 'Desenho_D.pdf', 1
 INSERT INTO Produtos (Cod_Produtos, Nome_Produtos, Cor_Produtos, Dimensoes_Produtos, Peso_Produtos, Preco_Produtos, Tempo_Fabri_Produtos, Desenho_Produtos, Cod_RS_Prod)
 VALUES (5, 'Produto E', 'Branco', '25x35x45 cm', 3.0, 120.00, 15, 'Desenho_E.pdf', 105);
 
--- Atualizar o preço de um produto específico
+-- Atualiza o preço de um produto específico
 UPDATE Produtos
 SET Preco_Produtos = 55.00
 WHERE Cod_Produtos = 1;
 
--- Atualizar o tempo de fabricação de um produto específico
+-- Atualiza o tempo de fabricação de um produto específico
 UPDATE Produtos
 SET Tempo_Fabri_Produtos = 6
 WHERE Cod_Produtos = 2;
 
--- Deletar um produto específico do registro
+-- Deleta um produto específico do registro
 DELETE FROM Produtos
 WHERE Cod_Produtos = 3;
 );
@@ -359,17 +359,17 @@ VALUES (4, 1500, '2024-12-20');
 INSERT INTO Registro_Suprimentos (Cod_RS, Quantidade_RS, Data_Necessidade_RS)
 VALUES (5, 300, '2024-12-15');
 
--- Atualizar a quantidade de suprimento necessária para um registro específico
+-- Atualiza a quantidade de suprimento necessária para um registro específico
 UPDATE Registro_Suprimentos
 SET Quantidade_RS = 600
 WHERE Cod_RS = 1;
 
--- Atualizar a data de necessidade de suprimento para um registro específico
+-- Atualiza a data de necessidade de suprimento para um registro específico
 UPDATE Registro_Suprimentos
 SET Data_Necessidade_RS = '2024-12-05'
 WHERE Cod_RS = 2;
 
--- Deletar um registro específico de suprimento
+-- Deleta um registro específico de suprimento
 DELETE FROM Registro_Suprimentos
 WHERE Cod_RS = 3;
 );
@@ -398,17 +398,17 @@ VALUES (4, 'Motor Elétrico', 'Mecânico', 80, 50.00, 'Unidade');
 INSERT INTO Componentes (Cod_Componentes, Nome_Componentes, Tipo_Componentes, QTD_Estoque_Componentes, Preco_Unit_Componentes, Unidade_Componente)
 VALUES (5, 'Fio de Cobre', 'Eletrônico', 1000, 0.20, 'Metro');
 
--- Atualizar a quantidade em estoque de um componente específico
+-- Atualiza a quantidade em estoque de um componente específico
 UPDATE Componentes
 SET QTD_Estoque_Componentes = 600
 WHERE Cod_Componentes = 1;
 
--- Atualizar o preço unitário de um componente específico
+-- Atualiza o preço unitário de um componente específico
 UPDATE Componentes
 SET Preco_Unit_Componentes = 0.08
 WHERE Cod_Componentes = 2;
 
--- Deletar um componente específico do registro
+-- Deleta um componente específico do registro
 DELETE FROM Componentes
 WHERE Cod_Componentes = 3;
 );
@@ -437,17 +437,17 @@ VALUES (4, 15, '2021-08-30', '2024-08-30', 4);
 INSERT INTO Maquinas (Cod_Maquina, Temp_Vida_Maquina, Data_Compra_Maquina, Data_Fim_Garan_Maquina, Cod_RM_Maq)
 VALUES (5, 20, '2020-11-05', '2025-11-05', 5);
 
--- Atualizar o tempo de vida de uma máquina específica
+-- Atualiza o tempo de vida de uma máquina específica
 UPDATE Maquinas
 SET Temp_Vida_Maquina = 18
 WHERE Cod_Maquina = 1;
 
--- Atualizar a data de fim da garantia de uma máquina específica
+-- Atualiza a data de fim da garantia de uma máquina específica
 UPDATE Maquinas
 SET Data_Fim_Garan_Maquina = '2026-12-10'
 WHERE Cod_Maquina = 2;
 
--- Deletar um registro de máquina específico
+-- Deleta um registro de máquina específico
 DELETE FROM Maquinas
 WHERE Cod_Maquina = 3;
 );
@@ -475,17 +475,17 @@ VALUES (4, 300, 'Unidades', 40, 160, 32);
 INSERT INTO Recursos_Especificos_RE (Cod_RE, Quant_Necessaria, Unidade_RE, Tempo_Uso, Horas_Trabalho_RE, Horas_Mao_Obra)
 VALUES (5, 150, 'Peças', 15, 60, 12);
 
--- Atualizar a quantidade necessária de um recurso específico
+-- Atualiza a quantidade necessária de um recurso específico
 UPDATE Recursos_Especificos_RE
 SET Quant_Necessaria = 60
 WHERE Cod_RE = 1;
 
--- Atualizar o tempo de uso de um recurso específico
+-- Atualiza o tempo de uso de um recurso específico
 UPDATE Recursos_Especificos_RE
 SET Tempo_Uso = 25
 WHERE Cod_RE = 2;
 
--- Deletar um recurso específico do registro
+-- Deleta um recurso específico do registro
 DELETE FROM Recursos_Especificos_RE
 WHERE Cod_RE = 3;
 );
@@ -513,17 +513,17 @@ VALUES (4, '2024-11-12', 'Ajuste de calibragem e verificação de sensores', 104
 INSERT INTO Registro_Manutencao (Cod_RM, Data_RM, Descricao_RM, Cod_Maq_RM)
 VALUES (5, '2024-11-15', 'Limpeza e manutenção preventiva', 105);
 
--- Atualizar a descrição da manutenção de um registro específico
+-- Atualiza a descrição da manutenção de um registro específico
 UPDATE Registro_Manutencao
 SET Descricao_RM = 'Substituição do filtro de ar e ajuste no sistema hidráulico'
 WHERE Cod_RM = 1;
 
--- Atualizar a data de manutenção de um registro específico
+-- Atualiza a data de manutenção de um registro específico
 UPDATE Registro_Manutencao
 SET Data_RM = '2024-11-18'
 WHERE Cod_RM = 2;
 
--- Deletar um registro de manutenção específico
+-- Deleta um registro de manutenção específico
 DELETE FROM Registro_Manutencao
 WHERE Cod_RM = 3;
 );
@@ -548,17 +548,17 @@ VALUES (4, 80, '2024-12-15');
 INSERT INTO Registro_Suprimentos (Cod_RS, Quantidade_RS, Data_Necessidade_RS)
 VALUES (5, 120, '2024-12-20');
 
--- Atualizar a quantidade de suprimento de um registro específico
+-- Atualiza a quantidade de suprimento de um registro específico
 UPDATE Registro_Suprimentos
 SET Quantidade_RS = 180
 WHERE Cod_RS = 1;
 
--- Atualizar a data de necessidade de suprimento de um registro específico
+-- Atualiza a data de necessidade de suprimento de um registro específico
 UPDATE Registro_Suprimentos
 SET Data_Necessidade_RS = '2024-12-25'
 WHERE Cod_RS = 2;
 
--- Deletar um registro de suprimento específico
+-- Deleta um registro de suprimento específico
 DELETE FROM Registro_Suprimentos
 WHERE Cod_RS = 3;
 );
@@ -588,17 +588,17 @@ VALUES (4, 104);
 INSERT INTO Empregados_Produtos (Matricula_Empre_EMPR, Cod_Produtos_EMPR)
 VALUES (5, 105);
 
--- Atualizar o código do produto associado a um empregado específico
+-- Atualiza o código do produto associado a um empregado específico
 UPDATE Empregados_Produtos
 SET Cod_Produtos_EMPR = 106
 WHERE Matricula_Empre_EMPR = 1 AND Cod_Produtos_EMPR = 101;
 
--- Atualizar a matrícula do empregado associado a um produto específico
+-- Atualiza a matrícula do empregado associado a um produto específico
 UPDATE Empregados_Produtos
 SET Matricula_Empre_EMPR = 6
 WHERE Matricula_Empre_EMPR = 2 AND Cod_Produtos_EMPR = 102;
 
--- Deletar a associação de um empregado com um produto específico
+-- Deleta a associação de um empregado com um produto específico
 DELETE FROM Empregados_Produtos
 WHERE Matricula_Empre_EMPR = 3 AND Cod_Produtos_EMPR = 103;
 );
@@ -627,17 +627,17 @@ VALUES (4, '22.334.455/0001-66');
 INSERT INTO Clientes_Empresas (cod_Cliente, CNPJ_Empresas)
 VALUES (5, '33.445.556/0001-55');
 
--- Atualizar o CNPJ da empresa associada a um cliente específico
+-- Atualiza o CNPJ da empresa associada a um cliente específico
 UPDATE Clientes_Empresas
 SET CNPJ_Empresas = '44.556.667/0001-44'
 WHERE cod_Cliente = 1 AND CNPJ_Empresas = '12.345.678/0001-99';
 
--- Atualizar o código do cliente associado a uma empresa específica
+-- Atualiza o código do cliente associado a uma empresa específica
 UPDATE Clientes_Empresas
 SET cod_Cliente = 6
 WHERE cod_Cliente = 2 AND CNPJ_Empresas = '98.765.432/0001-88';
 
--- Deletar a associação de um cliente com uma empresa específica
+-- Deleta a associação de um cliente com uma empresa específica
 DELETE FROM Clientes_Empresas
 WHERE cod_Cliente = 3 AND CNPJ_Empresas = '11.223.344/0001-77';
 );
@@ -666,17 +666,17 @@ VALUES (4, '22.334.455/0001-66');
 INSERT INTO Componentes_Fornecedores (Cod_Componentes, CNPJ_Fornecedores)
 VALUES (5, '33.445.556/0001-55');
 
--- Atualizar o CNPJ do fornecedor associado a um componente específico
+-- Atualiza o CNPJ do fornecedor associado a um componente específico
 UPDATE Componentes_Fornecedores
 SET CNPJ_Fornecedores = '44.556.667/0001-44'
 WHERE Cod_Componentes = 1 AND CNPJ_Fornecedores = '12.345.678/0001-99';
 
--- Atualizar o código do componente associado a um fornecedor específico
+-- Atualiza o código do componente associado a um fornecedor específico
 UPDATE Componentes_Fornecedores
 SET Cod_Componentes = 6
 WHERE Cod_Componentes = 2 AND CNPJ_Fornecedores = '98.765.432/0001-88';
 
--- Deletar a associação de um fornecedor com um componente específico
+-- Deleta a associação de um fornecedor com um componente específico
 DELETE FROM Componentes_Fornecedores
 WHERE Cod_Componentes = 3 AND CNPJ_Fornecedores = '11.223.344/0001-77';
 );
@@ -706,17 +706,17 @@ VALUES (4, '22.334.455/0001-66');
 INSERT INTO Enderecos_Empresas (ID_Enderecos, CNPJ_Empresas)
 VALUES (5, '33.445.556/0001-55');
 
--- Atualizar o CNPJ da empresa associado a um endereço específico
+-- Atualiza o CNPJ da empresa associado a um endereço específico
 UPDATE Enderecos_Empresas
 SET CNPJ_Empresas = '44.556.667/0001-44'
 WHERE ID_Enderecos = 1 AND CNPJ_Empresas = '12.345.678/0001-99';
 
--- Atualizar o ID de endereço associado a uma empresa específica
+-- Atualiza o ID de endereço associado a uma empresa específica
 UPDATE Enderecos_Empresas
 SET ID_Enderecos = 6
 WHERE ID_Enderecos = 2 AND CNPJ_Empresas = '98.765.432/0001-88';
 
--- Deletar a associação de uma empresa com um endereço específico
+-- Deleta a associação de uma empresa com um endereço específico
 DELETE FROM Enderecos_Empresas
 WHERE ID_Enderecos = 3 AND CNPJ_Empresas = '11.223.344/0001-77';
 );
@@ -745,17 +745,17 @@ VALUES (4, '22.334.455/0001-66');
 INSERT INTO Endereco_Fornecedores (ID_Enderecos, CNPJ_Fornecedores)
 VALUES (5, '33.445.556/0001-55');
 
--- Atualizar o CNPJ do fornecedor associado a um endereço específico
+-- Atualiza o CNPJ do fornecedor associado a um endereço específico
 UPDATE Endereco_Fornecedores
 SET CNPJ_Fornecedores = '44.556.667/0001-44'
 WHERE ID_Enderecos = 1 AND CNPJ_Fornecedores = '12.345.678/0001-99';
 
--- Atualizar o ID de endereço associado a um fornecedor específico
+-- Atualiza o ID de endereço associado a um fornecedor específico
 UPDATE Endereco_Fornecedores
 SET ID_Enderecos = 6
 WHERE ID_Enderecos = 2 AND CNPJ_Fornecedores = '98.765.432/0001-88';
 
--- Deletar a associação de um fornecedor com um endereço específico
+-- Deleta a associação de um fornecedor com um endereço específico
 DELETE FROM Endereco_Fornecedores
 WHERE ID_Enderecos = 3 AND CNPJ_Fornecedores = '11.223.344/0001-77';
 );
@@ -784,17 +784,17 @@ VALUES (1004, 104);
 INSERT INTO Encomendas_Produtos (Num_Encomendas, Cod_Produtos_EMPR)
 VALUES (1005, 105);
 
--- Atualizar o código do produto associado a uma encomenda específica
+-- Atualiza o código do produto associado a uma encomenda específica
 UPDATE Encomendas_Produtos
 SET Cod_Produtos_EMPR = 106
 WHERE Num_Encomendas = 1001 AND Cod_Produtos_EMPR = 101;
 
--- Atualizar o número da encomenda associado a um produto específico
+-- Atualiza o número da encomenda associado a um produto específico
 UPDATE Encomendas_Produtos
 SET Num_Encomendas = 1006
 WHERE Num_Encomendas = 1002 AND Cod_Produtos_EMPR = 102;
 
--- Deletar a associação de uma encomenda com um produto específico
+-- Deleta a associação de uma encomenda com um produto específico
 DELETE FROM Encomendas_Produtos
 WHERE Num_Encomendas = 1003 AND Cod_Produtos_EMPR = 103;
 );
@@ -823,17 +823,17 @@ VALUES (4, 104);
 INSERT INTO Componentes_Produtos (Cod_Componentes, Cod_Produtos_EMPR)
 VALUES (5, 105);
 
--- Atualizar o código do produto associado a um componente específico
+-- Atualiza o código do produto associado a um componente específico
 UPDATE Componentes_Produtos
 SET Cod_Produtos_EMPR = 106
 WHERE Cod_Componentes = 1 AND Cod_Produtos_EMPR = 101;
 
--- Atualizar o código do componente associado a um produto específico
+-- Atualiza o código do componente associado a um produto específico
 UPDATE Componentes_Produtos
 SET Cod_Componentes = 6
 WHERE Cod_Componentes = 2 AND Cod_Produtos_EMPR = 102;
 
--- Deletar a associação de um componente com um produto específico
+-- Deleta a associação de um componente com um produto específico
 DELETE FROM Componentes_Produtos
 WHERE Cod_Componentes = 3 AND Cod_Produtos_EMPR = 103;
 );
@@ -862,17 +862,17 @@ VALUES (4, 1004);
 INSERT INTO Componentes_RE (Cod_Componentes, Cod_RE)
 VALUES (5, 1005);
 
--- Atualizar o código de RE associado a um componente específico
+-- Atualiza o código de RE associado a um componente específico
 UPDATE Componentes_RE
 SET Cod_RE = 2001
 WHERE Cod_Componentes = 1 AND Cod_RE = 1001;
 
--- Atualizar o código de componente associado a um RE específico
+-- Atualiza o código de componente associado a um RE específico
 UPDATE Componentes_RE
 SET Cod_Componentes = 6
 WHERE Cod_Componentes = 2 AND Cod_RE = 1002;
 
--- Deletar a associação de um componente com um RE específico
+-- Deleta a associação de um componente com um RE específico
 DELETE FROM Componentes_RE
 WHERE Cod_Componentes = 3 AND Cod_RE = 1003;
 );
@@ -901,17 +901,17 @@ VALUES (4, 104);
 INSERT INTO Clientes_Telefone (cod_Cliente, cod_Tel)
 VALUES (5, 105);
 
--- Atualizar o telefone associado a um cliente específico
+-- Atualiza o telefone associado a um cliente específico
 UPDATE Clientes_Telefone
 SET cod_Tel = 106
 WHERE cod_Cliente = 1 AND cod_Tel = 101;
 
--- Atualizar o cliente associado a um telefone específico
+-- Aq atualiza o cliente associado a um telefone específico
 UPDATE Clientes_Telefone
 SET cod_Cliente = 6
 WHERE cod_Cliente = 2 AND cod_Tel = 102;
 
--- Deletar a associação de um cliente com um telefone específico
+-- Aq deleta a associação de um cliente com um telefone específico
 DELETE FROM Clientes_Telefone
 WHERE cod_Cliente = 3 AND cod_Tel = 103;
 );
@@ -940,17 +940,17 @@ VALUES (4, 104);
 INSERT INTO Empregados_Telefone (Matricula_Empre, cod_Tel)
 VALUES (5, 105);
 
--- Atualizar o telefone associado a um empregado específico
+-- Atualiza o telefone associado a um empregado específico
 UPDATE Empregados_Telefone
 SET cod_Tel = 106
 WHERE Matricula_Empre = 1 AND cod_Tel = 101;
 
--- Atualizar o empregado associado a um telefone específico
+-- Atualiza o empregado associado a um telefone específico
 UPDATE Empregados_Telefone
 SET Matricula_Empre = 6
 WHERE Matricula_Empre = 2 AND cod_Tel = 102;
 
--- Deletar a associação de um empregado com um telefone específico
+-- Deleta a associação de um empregado com um telefone específico
 DELETE FROM Empregados_Telefone
 WHERE Matricula_Empre = 3 AND cod_Tel = 103;
 );
@@ -979,17 +979,17 @@ VALUES (4, 104);
 INSERT INTO Maquinas_Produtos (Cod_Maquina, Cod_Produtos_EMPR)
 VALUES (5, 105);
 
---Aq atualiza o produto associado a uma máquina específica
+-- Aq atualiza o produto associado a uma máquina específica
 UPDATE Maquinas_Produtos
 SET Cod_Produtos_EMPR = 106
 WHERE Cod_Maquina = 1 AND Cod_Produtos_EMPR = 101;
 
---Aq atualiza a máquina associada a um produto específico
+-- Aq atualiza a máquina associada a um produto específico
 UPDATE Maquinas_Produtos
 SET Cod_Maquina = 6
 WHERE Cod_Maquina = 2 AND Cod_Produtos_EMPR = 102;
 
---Aq deleta a associação de uma máquina a um produto específico
+-- Aq deleta a associação de uma máquina a um produto específico
 DELETE FROM Maquinas_Produtos
 WHERE Cod_Maquina = 3 AND Cod_Produtos_EMPR = 103;
 );

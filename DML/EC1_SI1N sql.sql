@@ -39,17 +39,17 @@ VALUES (4, 'Fornecedor D', 'Rua W', '101', 'Santa Clara', 'Curitiba', 'PR', 'Bra
 INSERT INTO Fornecedores (FORNEC_COD, FORNEC_NOME, FORNEC_RUA, FORNEC_NUMRUA, FORNEC_BAIRRO, FORNEC_CIDADE, FORNEC_ESTADO, FORNEC_PAIS, FORNEC_CODPOSTAL, FORNEC_TELEFONE, FORNEC_CONTATO)
 VALUES (5, 'Fornecedor E', 'Avenida Q', '202', 'Centro', 'Porto Alegre', 'RS', 'Brasil', '90000-000', '(51) 92222-3333', 'José Santos');
 
---Aq atualiza o telefone de um fornecedor específico
+-- Aq atualiza o telefone de um fornecedor específico
 UPDATE Fornecedores
 SET FORNEC_TELEFONE = '(11) 99888-7777'
 WHERE FORNEC_COD = 1;
 
---Aq altera o nome de contato de um fornecedor específico
+-- Aq altera o nome de contato de um fornecedor específico
 UPDATE Fornecedores
 SET FORNEC_CONTATO = 'Fernanda Oliveira'
 WHERE FORNEC_COD = 2;
 
---Aq deleta um fornecedor específico pelo código
+-- Aq deleta um fornecedor específico pelo código
 DELETE FROM Fornecedores
 WHERE FORNEC_COD = 3;
 );
@@ -85,17 +85,17 @@ VALUES (4, 'Filial D', 'Rua W', '101', 'Santa Clara', 'Curitiba', 'PR', 'Brasil'
 INSERT INTO Filiais (FILIAL_COD, FILIAL_NOME, FILIAL_RUA, FILIAL_NUMRUA, FILIAL_BAIRRO, FILIAL_CIDADE, FILIAL_ESTADO, FILIAL_PAIS, FILIAL_CODPOSTAL, FILIAL_CAPACIDADE)
 VALUES (5, 'Filial E', 'Avenida Q', '202', 'Centro', 'Porto Alegre', 'RS', 'Brasil', '90000-000', 350);
 
---Aq atualiza a capacidade de uma filial específica
+-- Aq atualiza a capacidade de uma filial específica
 UPDATE Filiais
 SET FILIAL_CAPACIDADE = 600
 WHERE FILIAL_COD = 1;
 
---Aq altera o nome da filial
+-- Aq altera o nome da filial
 UPDATE Filiais
 SET FILIAL_NOME = 'Filial F'
 WHERE FILIAL_COD = 2;
 
---Aq deleta uma filial específica pelo código
+-- Aq deleta uma filial específica pelo código
 DELETE FROM Filiais
 WHERE FILIAL_COD = 3;
 );
@@ -132,17 +132,17 @@ VALUES (4, 'Produto D', 'Produto industrial', 'Especificação D', 30, 100.00, '
 INSERT INTO Produtos (PROD_COD, PROD_NOME, PROD_DESCRICAO, PROD_ESPECTEC, PROD_QUANT, PROD_PRECOUNIT, PROD_UNIDMEDIDA, PROD_ESTOQ_MIN)
 VALUES (5, 'Produto E', 'Produto alimentar', 'Especificação E', 500, 3.60, 'unidade', 50);
 
---Aq atualiza a quantidade de um produto específico
+-- Aq atualiza a quantidade de um produto específico
 UPDATE Produtos
 SET PROD_QUANT = 120
 WHERE PROD_COD = 1;
 
---Aq altera o preço unitário de um produto específico
+-- Aq altera o preço unitário de um produto específico
 UPDATE Produtos
 SET PROD_PRECOUNIT = 12.00
 WHERE PROD_COD = 2;
 
---Aq deleta um produto específico pelo código
+-- Aq deleta um produto específico pelo código
 DELETE FROM Produtos
 WHERE PROD_COD = 3;
 );
@@ -161,13 +161,8 @@ PED_HORA TIME NOT NULL,
 PED_PREVISAO DATE,
 PED_STATUS ENUM('PENDENTE','CONCLUÍDO','EM ESPERA', 'CANCELADO') NOT NULL,
 PED_FORNECEDOR INT, 
-#NOSSA CHAVE ESTRANGEIRA DE FORNECEDOR
-#CRIANDO A REFERENCIA PARA A CHAVE ESTRANGEIRA
-#RESTRIÇÃO APELIDO CH.ESTRANGEIRA(CAMPO CRIADO) REFERENCIA TABELA(CH.PRIMÁRIA)
-CONSTRAINT FK_FORNECEDOR FOREIGN KEY (PED_FORNECEDOR) 
-#DAR NOME A RESTRIÇÃO(CONSTRAINT) É UMA BOA PRÁTICA
-REFERENCES FORNECEDORES(FORNEC_COD) 
-#REFERENCIA A CHAVE PRIMÁRIA DE FORNECEDORES
+CONSTRAINT FK_FORNECEDOR FOREIGN KEY (PED_FORNECEDOR)  
+REFERENCES FORNECEDORES (FORNEC_COD) 
 
 INSERT INTO Pedidos (PED_CODIGO, PED_DATA, PED_HORA, PED_PREVISAO, PED_STATUS, PED_FORNECEDOR)
 VALUES (1, '2024-11-01', '14:30:00', '2024-11-05', 'PENDENTE', 1);
@@ -184,17 +179,17 @@ VALUES (4, '2024-11-04', '11:30:00', '2024-11-08', 'CANCELADO', 4);
 INSERT INTO Pedidos (PED_CODIGO, PED_DATA, PED_HORA, PED_PREVISAO, PED_STATUS, PED_FORNECEDOR)
 VALUES (5, '2024-11-05', '13:15:00', '2024-11-09', 'PENDENTE', 5);
 
---Aq atualiza o status de um pedido específico
+-- Aq atualiza o status de um pedido específico
 UPDATE Pedidos
 SET PED_STATUS = 'EM ESPERA'
 WHERE PED_CODIGO = 1;
 
---Aq altera a data de previsão de um pedido específico
+-- Aq altera a data de previsão de um pedido específico
 UPDATE Pedidos
 SET PED_PREVISAO = '2024-11-10'
 WHERE PED_CODIGO = 2;
 
---Aq deleta um pedido específico pelo código
+-- Aq deleta um pedido específico pelo código
 DELETE FROM Pedidos
 WHERE PED_CODIGO = 3;
 );
@@ -224,17 +219,17 @@ VALUES ('2024-11-04', '12:00:00', 30, 'Bom estado', 4);
 INSERT INTO RECEBIMENTOS (RECEB_DATA, RECEB_HORA, RECEB_QUANT_PROD, RECEB_CONDICAO, RECEB_PEDIDOS)
 VALUES ('2024-11-05', '14:00:00', 250, 'Bom estado', 5);
 
---Aq atualiza a condição de um recebimento específico
+-- Aq atualiza a condição de um recebimento específico
 UPDATE RECEBIMENTOS
 SET RECEB_CONDICAO = 'Danos observados'
 WHERE RECEB_CODIGO = 3;
 
---Aq altera a quantidade de produtos recebidos em um pedido específico
+-- Aq altera a quantidade de produtos recebidos em um pedido específico
 UPDATE RECEBIMENTOS
 SET RECEB_QUANT_PROD = 120
 WHERE RECEB_CODIGO = 2;
 
---Aq deleta um recebimento específico pelo código
+-- Aq deleta um recebimento específico pelo código
 DELETE FROM RECEBIMENTOS
 WHERE RECEB_CODIGO = 4;
 );
@@ -247,9 +242,38 @@ CREATE TABLE IF NOT EXISTS PEDIDOS_PRODUTOS(
 PDPR_PEDIDOS INT,
 PDPR_PRODUTOS INT,
 PRIMARY KEY(PDPR_PEDIDOS,PDPR_PRODUTOS),
-PDPR_QUANT DECIMAL(10,3) NOT NULL,
+PDPR_QUANT INT NOT NULL,
 CONSTRAINT PDPR_FK_PEDIDOS FOREIGN KEY(PDPR_PEDIDOS) REFERENCES PEDIDOS(PED_CODIGO),
 CONSTRAINT PDPR_FK_PRODUTOS FOREIGN KEY(PDPR_PRODUTOS) REFERENCES PRODUTOS(PROD_COD)
+
+INSERT INTO PEDIDOS_PRODUTOS (PDPR_PEDIDOS, PDPR_PRODUTOS, PDPR_QUANT)
+VALUES (1, 101, 2);
+
+INSERT INTO PEDIDOS_PRODUTOS (PDPR_PEDIDOS, PDPR_PRODUTOS, PDPR_QUANT)
+VALUES (1, 102, 5);
+
+INSERT INTO PEDIDOS_PRODUTOS (PDPR_PEDIDOS, PDPR_PRODUTOS, PDPR_QUANT)
+VALUES (2, 103, 1);
+
+INSERT INTO PEDIDOS_PRODUTOS (PDPR_PEDIDOS, PDPR_PRODUTOS, PDPR_QUANT)
+VALUES (3, 101, 10);
+
+INSERT INTO PEDIDOS_PRODUTOS (PDPR_PEDIDOS, PDPR_PRODUTOS, PDPR_QUANT)
+VALUES (3, 104, 3);
+
+-- Aq atualiza a quantidade do produto 101 no pedido 1
+UPDATE PEDIDOS_PRODUTOS
+SET PDPR_QUANT = 4
+WHERE PDPR_PEDIDOS = 1 AND PDPR_PRODUTOS = 101;
+
+-- AQ atualiza a quantidade do produto 104 no pedido 3
+UPDATE PEDIDOS_PRODUTOS
+SET PDPR_QUANT = 5
+WHERE PDPR_PEDIDOS = 3 AND PDPR_PRODUTOS = 104;
+
+-- Aq deleta o vínculo do produto 102 com o pedido 1
+DELETE FROM PEDIDOS_PRODUTOS
+WHERE PDPR_PEDIDOS = 1 AND PDPR_PRODUTOS = 102;
 );
 
 #CRIANDO A TABELA FILIAIS_PRODUTOS
@@ -276,12 +300,12 @@ VALUES (3, 1004);
 INSERT INTO FILIAIS_PRODUTOS (FLPR_FILIAL, FLPR_PRODUTOS)
 VALUES (2, 1005);
 
---Aq atualiza a filial associada a um produto específico
+-- Aq atualiza a filial associada a um produto específico
 UPDATE Filiais_Produtos
 SET FLPR_FILIAL = 3
 WHERE FLPR_PRODUTOS  FLPR_FILIAL = 1;
 
---Aq altera o produto associado a uma filial específica
+-- Aq altera o produto associado a uma filial específica
 UPDATE FILIAIS_PRODUTOS
 SET FLPR_PRODUTOS = 1006
 WHERE FLPR_PRODUTOS  FLPR_FILIAL= 2;
@@ -291,7 +315,7 @@ WHERE FLPR_PRODUTOS  FLPR_FILIAL= 2;
 CREATE TABLE IF NOT EXISTS FORNECEDORES_PRODUTOS(
 FRPR_FORNECEDOR INT,
 FRPR_PRODUTOS INT,
-PRIMARY KEY(FRPR_FORNECEDOR,FRPR_PRODUTOS),
+PRIMARY KEY(FRPR_FORNECEDOR, FRPR_PRODUTOS),
 CONSTRAINT FRPR_FK_FORNECEDORES FOREIGN KEY(FRPR_FORNECEDOR)
 REFERENCES FORNECEDORES(FORNEC_COD),
 CONSTRAINT FRPR_FK_PRODUTOS FOREIGN KEY(FRPR_PRODUTOS) 
@@ -312,19 +336,17 @@ VALUES (3, 1004);
 INSERT INTO FORNECEDORES_PRODUTOS (FRPR_FORNECEDOR, FRPR_PRODUTOS)
 VALUES (2, 1005);
 
---Aq atualiza o fornecedor associado a um produto específico
+-- Aq atualiza o fornecedor associado a um produto específico
 UPDATE Fornecedores_Produtos
 SET FRPR_FORNECEDOR = 4
-WHERE FRPR_FORNECEDOR FRPR_PRODUTOS = 1;
+WHERE FRPR_FORNECEDOR, FRPR_PRODUTOS = 1;
 
---Aq altera o produto fornecido por um fornecedor específico
+-- Aq altera o produto fornecido por um fornecedor específico
 UPDATE Fornecedores_Produtos
 SET FRPR_PRODUTOS = 1006
-WHERE FRPR_FORNECEDOR FRPR_PRODUTOS = 2;
+WHERE FRPR_FORNECEDOR, FRPR_PRODUTOS = 2;
 
---Aq deleta a relação entre fornecedor e produto pelo código da relação
+-- Aq deleta a relação entre fornecedor e produto pelo código da relação
 DELETE FROM Fornecedores_Produtos
-WHERE FRPR_FORNECEDOR FRPR_PRODUTOS = 3;
+WHERE FRPR_FORNECEDOR, FRPR_PRODUTOS = 3;
 );
-
-
